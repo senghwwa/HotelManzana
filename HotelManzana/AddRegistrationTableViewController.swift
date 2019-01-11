@@ -173,26 +173,26 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
         }
     }
     
-    @IBAction func doneBarButtonTapped(_ sender: Any) {
-        let firstName = firstNameTextField.text ?? ""
-        let lastName = lastNameTextField.text ?? ""
-        let email = emailTextField.text ?? ""
-        let checkInDate = checkInDatePicker.date
-        let checkOutDate = checkOutDatePicker.date
-        let numberOfAdults = Int(numberOfAdultsStepper.value)
-        let numberOfChildren = Int(numberOfChildrenStepper.value)
-        let hasWifi = wifiSwitch.isOn
-        let roomChoice = roomType?.name ?? "Not set"
-        
-        print("DONE Tapped")
-        print("\(firstName) : \(lastName) : \(email)")
-        print("check-in: \(checkInDate)")
-        print("check-Out: \(checkOutDate)")
-        print("number of adults: \(numberOfAdults)")
-        print("number of children: \(numberOfChildren)")
-        print("has wifi: \(hasWifi)")
-        print("room choice: \(roomChoice)")
-    }
+//    @IBAction func doneBarButtonTapped(_ sender: Any) {
+//        let firstName = firstNameTextField.text ?? ""
+//        let lastName = lastNameTextField.text ?? ""
+//        let email = emailTextField.text ?? ""
+//        let checkInDate = checkInDatePicker.date
+//        let checkOutDate = checkOutDatePicker.date
+//        let numberOfAdults = Int(numberOfAdultsStepper.value)
+//        let numberOfChildren = Int(numberOfChildrenStepper.value)
+//        let hasWifi = wifiSwitch.isOn
+//        let roomChoice = roomType?.name ?? "Not set"
+//        
+//        print("DONE Tapped")
+//        print("\(firstName) : \(lastName) : \(email)")
+//        print("check-in: \(checkInDate)")
+//        print("check-Out: \(checkOutDate)")
+//        print("number of adults: \(numberOfAdults)")
+//        print("number of children: \(numberOfChildren)")
+//        print("has wifi: \(hasWifi)")
+//        print("room choice: \(roomChoice)")
+//    }
     
     @IBAction func datePickerValueChanged(_ sender: Any) {
         updateDateViews()
@@ -205,5 +205,8 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     @IBAction func wifiSwitchChanged(_ sender: UISwitch) {
     }
    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
 }
