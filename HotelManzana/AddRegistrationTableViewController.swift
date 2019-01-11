@@ -204,5 +204,6 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     
     @IBAction func wifiSwitchChanged(_ sender: UISwitch) {
     }
+   
     
 }

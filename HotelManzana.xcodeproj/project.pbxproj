@@ -15,6 +15,7 @@
 		7CD98BC921E8612F00334ADE /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD98BC821E8612F00334ADE /* RoomType.swift */; };
 		7CD98BCD21E8644000334ADE /* SelectRoomTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD98BCC21E8644000334ADE /* SelectRoomTypeTableViewController.swift */; };
 		7CD98BCF21E881A600334ADE /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD98BCE21E881A600334ADE /* Registration.swift */; };
+		7CD98BD121E883A800334ADE /* RegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD98BD021E883A800334ADE /* RegistrationTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		7CD98BC821E8612F00334ADE /* RoomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomType.swift; sourceTree = "<group>"; };
 		7CD98BCC21E8644000334ADE /* SelectRoomTypeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoomTypeTableViewController.swift; sourceTree = "<group>"; };
 		7CD98BCE21E881A600334ADE /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
+		7CD98BD021E883A800334ADE /* RegistrationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				7CD98BCE21E881A600334ADE /* Registration.swift */,
 				7C13172121E356F2004CC5F5 /* AppDelegate.swift */,
 				7C13172521E356F2004CC5F5 /* Main.storyboard */,
+				7CD98BD021E883A800334ADE /* RegistrationTableViewController.swift */,
 				7CD98BC821E8612F00334ADE /* RoomType.swift */,
 				7C13172821E356F6004CC5F5 /* Assets.xcassets */,
 				7C13172A21E356F6004CC5F5 /* LaunchScreen.storyboard */,
@@ -148,6 +151,7 @@
 				7C13173421E357E0004CC5F5 /* AddRegistrationTableViewController.swift in Sources */,
 				7C13172221E356F2004CC5F5 /* AppDelegate.swift in Sources */,
 				7CD98BCF21E881A600334ADE /* Registration.swift in Sources */,
+				7CD98BD121E883A800334ADE /* RegistrationTableViewController.swift in Sources */,
 				7CD98BC921E8612F00334ADE /* RoomType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
