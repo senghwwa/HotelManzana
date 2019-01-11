@@ -13,6 +13,7 @@
 		7C13172C21E356F6004CC5F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C13172A21E356F6004CC5F5 /* LaunchScreen.storyboard */; };
 		7C13173421E357E0004CC5F5 /* AddRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C13173321E357E0004CC5F5 /* AddRegistrationTableViewController.swift */; };
 		7CD98BC921E8612F00334ADE /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD98BC821E8612F00334ADE /* RoomType.swift */; };
+		7CD98BCD21E8644000334ADE /* SelectRoomTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD98BCC21E8644000334ADE /* SelectRoomTypeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		7C13172D21E356F6004CC5F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C13173321E357E0004CC5F5 /* AddRegistrationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRegistrationTableViewController.swift; sourceTree = "<group>"; };
 		7CD98BC821E8612F00334ADE /* RoomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomType.swift; sourceTree = "<group>"; };
+		7CD98BCC21E8644000334ADE /* SelectRoomTypeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoomTypeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		7C13172021E356F2004CC5F5 /* HotelManzana */ = {
 			isa = PBXGroup;
 			children = (
+				7CD98BCC21E8644000334ADE /* SelectRoomTypeTableViewController.swift */,
 				7C13173321E357E0004CC5F5 /* AddRegistrationTableViewController.swift */,
 				7C13172121E356F2004CC5F5 /* AppDelegate.swift */,
 				7C13172521E356F2004CC5F5 /* Main.storyboard */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CD98BCD21E8644000334ADE /* SelectRoomTypeTableViewController.swift in Sources */,
 				7C13173421E357E0004CC5F5 /* AddRegistrationTableViewController.swift in Sources */,
 				7C13172221E356F2004CC5F5 /* AppDelegate.swift in Sources */,
 				7CD98BC921E8612F00334ADE /* RoomType.swift in Sources */,

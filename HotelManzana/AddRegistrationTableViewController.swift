@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class AddRegistrationTableViewController: UITableViewController {
+class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeTableViewControllerDelegate {
     
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -24,6 +24,7 @@ class AddRegistrationTableViewController: UITableViewController {
     @IBOutlet weak var numberOfChildrenLabel: UILabel!
     @IBOutlet weak var numberOfChildrenStepper: UIStepper!
     @IBOutlet weak var wifiSwitch: UISwitch!
+    @IBOutlet weak var roomTypeLabel: UILabel!
     
     
     
@@ -39,6 +40,12 @@ class AddRegistrationTableViewController: UITableViewController {
             checkOutDatePicker.isHidden = !isCheckOutDatePickerShown
         }
     }
+    var roomType: RoomType?
+    
+    func didSelect(roomType: RoomType) {
+        self.roomType = roomType
+        updateRoomType()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,12 +56,8 @@ class AddRegistrationTableViewController: UITableViewController {
         
         updateDateViews()
         updateNumberOfGuests()
+        updateRoomType()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -131,6 +134,22 @@ class AddRegistrationTableViewController: UITableViewController {
         numberOfChildrenLabel.text = "\(Int(numberOfChildrenStepper.value))"
     }
     
+    func updateRoomType() {
+        if let roomType = roomType {
+            roomTypeLabel.text = roomType.name
+        } else {
+            roomTypeLabel.text = "Not Set"
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SelectRoomType" {
+            let destinationViewController = segue.destination as? SelectRoomTypeTableViewController
+            destinationViewController?.delegate = self
+            destinationViewController?.roomType = roomType
+        }
+    }
+    
     @IBAction func doneBarButtonTapped(_ sender: Any) {
         let firstName = firstNameTextField.text ?? ""
         let lastName = lastNameTextField.text ?? ""
@@ -140,6 +159,7 @@ class AddRegistrationTableViewController: UITableViewController {
         let numberOfAdults = Int(numberOfAdultsStepper.value)
         let numberOfChildren = Int(numberOfChildrenStepper.value)
         let hasWifi = wifiSwitch.isOn
+        let roomChoice = roomType?.name ?? "Not set"
         
         print("DONE Tapped")
         print("\(firstName) : \(lastName) : \(email)")
@@ -148,6 +168,7 @@ class AddRegistrationTableViewController: UITableViewController {
         print("number of adults: \(numberOfAdults)")
         print("number of children: \(numberOfChildren)")
         print("has wifi: \(hasWifi)")
+        print("room choice: \(roomChoice)")
     }
     
     @IBAction func datePickerValueChanged(_ sender: Any) {
