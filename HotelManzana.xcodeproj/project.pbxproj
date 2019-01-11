@@ -12,6 +12,7 @@
 		7C13172921E356F6004CC5F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C13172821E356F6004CC5F5 /* Assets.xcassets */; };
 		7C13172C21E356F6004CC5F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C13172A21E356F6004CC5F5 /* LaunchScreen.storyboard */; };
 		7C13173421E357E0004CC5F5 /* AddRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C13173321E357E0004CC5F5 /* AddRegistrationTableViewController.swift */; };
+		7CD98BC921E8612F00334ADE /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD98BC821E8612F00334ADE /* RoomType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		7C13172B21E356F6004CC5F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C13172D21E356F6004CC5F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C13173321E357E0004CC5F5 /* AddRegistrationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRegistrationTableViewController.swift; sourceTree = "<group>"; };
+		7CD98BC821E8612F00334ADE /* RoomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				7C13173321E357E0004CC5F5 /* AddRegistrationTableViewController.swift */,
 				7C13172121E356F2004CC5F5 /* AppDelegate.swift */,
 				7C13172521E356F2004CC5F5 /* Main.storyboard */,
+				7CD98BC821E8612F00334ADE /* RoomType.swift */,
 				7C13172821E356F6004CC5F5 /* Assets.xcassets */,
 				7C13172A21E356F6004CC5F5 /* LaunchScreen.storyboard */,
 				7C13172D21E356F6004CC5F5 /* Info.plist */,
@@ -137,6 +140,7 @@
 			files = (
 				7C13173421E357E0004CC5F5 /* AddRegistrationTableViewController.swift in Sources */,
 				7C13172221E356F2004CC5F5 /* AppDelegate.swift in Sources */,
+				7CD98BC921E8612F00334ADE /* RoomType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
