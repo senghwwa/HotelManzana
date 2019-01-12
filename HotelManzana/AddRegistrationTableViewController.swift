@@ -47,28 +47,40 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
         updateRoomType()
     }
     
-    var registration: Registration? {
-        
-        guard let roomType = roomType else {return nil}
-        let firstName = firstNameTextField.text ?? ""
-        let lastName = lastNameTextField.text ?? ""
-        let email = emailTextField.text ?? ""
-        let checkInDate = checkInDatePicker.date
-        let checkOutDate = checkOutDatePicker.date
-        let numberOfAdults = Int(numberOfAdultsStepper.value)
-        let numberOfChildren = Int(numberOfChildrenStepper.value)
-        let hasWifi = wifiSwitch.isOn
-        
-        return Registration(firstName: firstName,
-                            lastName: lastName,
-                            emailAddress: email,
-                            checkInDate: checkInDate,
-                            checkOutDate: checkOutDate,
-                            numberOfAdults: numberOfAdults,
-                            numberOfChildren: numberOfChildren,
-                            roomType: roomType,
-                            wifi: hasWifi)
-    }
+//    var registration: Registration? {
+//
+//        guard let roomType = roomType else {return nil}
+//        let firstName = firstNameTextField.text ?? ""
+//        let lastName = lastNameTextField.text ?? ""
+//        let email = emailTextField.text ?? ""
+//        let checkInDate = checkInDatePicker.date
+//        let checkOutDate = checkOutDatePicker.date
+//        let numberOfAdults = Int(numberOfAdultsStepper.value)
+//        let numberOfChildren = Int(numberOfChildrenStepper.value)
+//        let hasWifi = wifiSwitch.isOn
+//
+//        return Registration(firstName: firstName,
+//                            lastName: lastName,
+//                            emailAddress: email,
+//                            checkInDate: checkInDate,
+//                            checkOutDate: checkOutDate,
+//                            numberOfAdults: numberOfAdults,
+//                            numberOfChildren: numberOfChildren,
+//                            roomType: roomType,
+//                            wifi: hasWifi)
+//    }
+
+//    var registration = Registration(firstName: "",
+//                            lastName: "",
+//                            emailAddress: "",
+//                            checkInDate: Date(),
+//                            checkOutDate: Date(),
+//                            numberOfAdults: 0,
+//                            numberOfChildren: 0,
+//                            roomType: RoomType.all[0],
+//                            wifi: false)
+
+    var registration: Registration?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,15 +145,10 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
         }
     }
     
-    /*
+
      // MARK: - Navigation
      
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
     func updateDateViews() {
         let dateFormatter = DateFormatter()
@@ -170,6 +177,11 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
             let destinationViewController = segue.destination as? SelectRoomTypeTableViewController
             destinationViewController?.delegate = self
             destinationViewController?.roomType = roomType
+        }
+        if segue.identifier == "AddRegistration" {
+            guard let registrationTableViewController = segue.destination as? RegistrationTableViewController else {return}
+            registration?.firstName = firstNameTextField.text ?? ""
+            
         }
     }
     

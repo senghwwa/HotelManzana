@@ -10,14 +10,14 @@ import Foundation
 
 struct Registration {
     
-    let firstName: String
-    let lastName: String
-    let emailAddress: String
-    let checkInDate: Date
-    let checkOutDate: Date
-    let numberOfAdults: Int
-    let numberOfChildren: Int
-    let roomType: RoomType
-    let wifi: Bool
+    var firstName: String
+    var lastName: String
+    var emailAddress: String
+    var checkInDate: Date
+    var checkOutDate: Date
+    var numberOfAdults: Int
+    var numberOfChildren: Int
+    var roomType: RoomType
+    var wifi: Bool
     
 }

@@ -272,22 +272,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9VT-2G-g5F">
-                                                    <rect key="frame" x="16" y="0.0" width="351" height="43.5"/>
+                                                    <rect key="frame" x="16" y="0.0" width="390" height="43.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wi-Fi (per day)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mD1-p3-mbD">
-                                                            <rect key="frame" x="0.0" y="11.5" width="239" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="11.5" width="278" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="$ 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtm-pP-Kar">
-                                                            <rect key="frame" x="254" y="11.5" width="33" height="20.5"/>
+                                                            <rect key="frame" x="293" y="11.5" width="33" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mjO-jF-7NP">
-                                                            <rect key="frame" x="302" y="6.5" width="51" height="31"/>
+                                                            <rect key="frame" x="341" y="6.5" width="51" height="31"/>
                                                             <connections>
                                                                 <action selector="wifiSwitchChanged:" destination="lCA-Tk-MNB" eventType="valueChanged" id="dai-CL-bfa"/>
                                                             </connections>
@@ -407,6 +407,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="bHL-bK-HEP" kind="presentation" identifier="ViewRegistration" id="fUo-Qz-Zz2"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -417,7 +420,7 @@
                     <navigationItem key="navigationItem" title="Registrations" id="e2j-oC-vSi">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="e3z-A1-U4C">
                             <connections>
-                                <segue destination="bHL-bK-HEP" kind="presentation" id="xvs-JD-b7B"/>
+                                <segue destination="bHL-bK-HEP" kind="presentation" identifier="AddRegistration" id="xvs-JD-b7B"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -504,4 +507,7 @@
             <point key="canvasLocation" x="-749" y="-75"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fUo-Qz-Zz2"/>
+    </inferredMetricsTieBreakers>
 </document>

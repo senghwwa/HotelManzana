@@ -11,6 +11,7 @@ import UIKit
 class RegistrationTableViewController: UITableViewController {
 
     var registrations: [Registration] = []
+    var registration: Registration!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +43,7 @@ class RegistrationTableViewController: UITableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         
-cell.textLabel?.text = registration.firstName + " " + registration.lastName
+        cell.textLabel?.text = registration.firstName + " " + registration.lastName
         cell.detailTextLabel?.text = dateFormatter.string(from: registration.checkInDate) + " - " + dateFormatter.string(from: registration.checkOutDate) + " : " + registration.roomType.name
         
         return cell
@@ -84,20 +85,33 @@ cell.textLabel?.text = registration.firstName + " " + registration.lastName
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+        if segue.identifier == "ViewRegistration" {
+            
+            guard let addRegistrationTableViewController = segue.destination as? AddRegistrationTableViewController else {return}
+            if let indexPath = tableView.indexPathForSelectedRow {
+                addRegistrationTableViewController.registration = registrations[indexPath.row]
+            }
+        }
 
+    }
+//    guard let bookFormViewController = segue.destination as? BookFormTableViewController else {return}
+//
+//    if let indexPath = tableView.indexPathForSelectedRow,
+//    segue.identifier == PropertyKeys.editBookSegue {
+//    bookFormViewController.book = books[indexPath.row]
+
+    
+    
     @IBAction func unwindFromAddRegistration(unwindSegue: UIStoryboardSegue) {
-        
+        print("Unwinding from AddRegistration")
         guard let addRegistrationViewController = unwindSegue.source as? AddRegistrationTableViewController,
             let registration = addRegistrationViewController.registration else {return}
+        print("firstname: \(registration.firstName)")
         registrations.append(registration)
         tableView.reloadData()
     }
