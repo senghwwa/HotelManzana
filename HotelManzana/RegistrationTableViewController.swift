@@ -49,15 +49,7 @@ class RegistrationTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-//     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//     guard let bookFormViewController = segue.destination as? BookFormTableViewController else {return}
-//
-//     if let indexPath = tableView.indexPathForSelectedRow,
-//     segue.identifier == PropertyKeys.editBookSegue {
-//     bookFormViewController.book = books[indexPath.row]
-//     }
+
         guard let addRegistrationTableViewController = segue.destination as? AddRegistrationTableViewController else {return}
         if segue.identifier == "AddRegistration" {
             registrationMode = "ADD"
@@ -65,6 +57,7 @@ class RegistrationTableViewController: UITableViewController {
         } else {
             registrationMode = "VIEW"
             addRegistrationTableViewController.tableMode = registrationMode
+            addRegistrationTableViewController.title = "View Registration Details"
             if let indexPath = tableView.indexPathForSelectedRow {
                 addRegistrationTableViewController.registration = registrations[indexPath.row]
             }

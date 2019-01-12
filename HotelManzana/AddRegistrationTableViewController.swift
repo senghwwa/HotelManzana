@@ -179,12 +179,15 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
         let hasWifi = wifiSwitch.isOn
         let roomChoice = roomType?.name ?? "Not set"
         if firstName == "" || lastName == "" || email == "" {
+            print("No customer details")
             return
         }
         if numberOfAdults == 0 {
+            print("No adults")
             return
         }
         if roomChoice == "Not set" {
+            print("No room choice")
             return
         }
         
@@ -224,7 +227,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
             totalCharge = (nightsStay * roomPrice) + totalWifiCharge
             chargeTotalLabel.text = "$ \(totalCharge)"
         } else {
-            chargeTotalLabel.text = ""
+            chargeTotalLabel.text = "  "
         }
     }
     
@@ -244,6 +247,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         updateNumberOfGuests()
+        enableDoneButton()
     }
     
     @IBAction func wifiSwitchChanged(_ sender: UISwitch) {

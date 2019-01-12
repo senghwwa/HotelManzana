@@ -216,7 +216,6 @@
                                                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Oku-jY-e5g">
                                                             <rect key="frame" x="296" y="7.5" width="94" height="29"/>
                                                             <connections>
-                                                                <action selector="registrationDataChanged:" destination="lCA-Tk-MNB" eventType="editingChanged" id="5VH-ji-IVJ"/>
                                                                 <action selector="stepperValueChanged:" destination="lCA-Tk-MNB" eventType="valueChanged" id="aAO-fg-fXr"/>
                                                             </connections>
                                                         </stepper>
@@ -256,7 +255,6 @@
                                                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="sod-fS-1kx">
                                                             <rect key="frame" x="296" y="7.5" width="94" height="29"/>
                                                             <connections>
-                                                                <action selector="registrationDataChanged:" destination="lCA-Tk-MNB" eventType="editingChanged" id="ywg-Jk-Q6F"/>
                                                                 <action selector="stepperValueChanged:" destination="lCA-Tk-MNB" eventType="valueChanged" id="145-WP-TF2"/>
                                                             </connections>
                                                         </stepper>
