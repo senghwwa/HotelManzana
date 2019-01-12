@@ -25,7 +25,10 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     @IBOutlet weak var roomTypeLabel: UILabel!
     @IBOutlet weak var doneButtonTapped: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
-    
+    @IBOutlet weak var numberOfNightsLabel: UILabel!
+    @IBOutlet weak var chargeRoomTypeLabel: UILabel!
+    @IBOutlet weak var chargeWifiLabel: UILabel!
+    @IBOutlet weak var chargeTotalLabel: UILabel!
     
     
     let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
@@ -44,12 +47,8 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     var roomType: RoomType?
     var tableMode: String?
     var registration: Registration?
-
-    func didSelect(roomType: RoomType) {
-        self.roomType = roomType
-        updateRoomType()
-        enableDoneButton()
-    }
+    var chargeTotal: Double = 0.0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +73,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
         updateDateViews()
         updateNumberOfGuests()
         updateRoomType()
+        updateRegistrationCharge()
         enableDoneButton()
         
     }
@@ -137,6 +137,12 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
         }
     }
 
+    func didSelect(roomType: RoomType) {
+        self.roomType = roomType
+        updateRoomType()
+        updateRegistrationCharge()
+        enableDoneButton()
+    }
     
     func updateDateViews() {
         let dateFormatter = DateFormatter()
@@ -196,8 +202,36 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
 
     }
     
+    func updateRegistrationCharge() {
+        var totalCharge: Int = 0
+        var totalWifiCharge: Int = 0
+        let difference = NSCalendar.current.dateComponents([.day], from: checkInDatePicker.date, to: checkOutDatePicker.date)
+        let nightsStay = difference.day ?? 0
+        numberOfNightsLabel.text = "\(nightsStay)"
+        
+        let roomShortName = roomType?.shortName ?? ""
+        let roomPrice = roomType?.price ?? 0
+        chargeRoomTypeLabel.text = roomShortName + "   " + "$ \(roomPrice)"
+
+        if wifiSwitch.isOn {
+            totalWifiCharge = nightsStay * 10
+            chargeWifiLabel.text = "Yes   $ \(totalWifiCharge)"
+        } else {
+            chargeWifiLabel.text = "No charge"
+        }
+
+        if roomPrice > 0 {
+            totalCharge = (nightsStay * roomPrice) + totalWifiCharge
+            chargeTotalLabel.text = "$ \(totalCharge)"
+        } else {
+            chargeTotalLabel.text = ""
+        }
+    }
+    
+    
     @IBAction func registrationDataChanged(_ sender: Any?) {
 
+        updateRegistrationCharge()
         enableDoneButton()
         
     }
@@ -205,6 +239,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     
     @IBAction func datePickerValueChanged(_ sender: Any) {
         updateDateViews()
+        updateRegistrationCharge()
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
@@ -212,6 +247,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     }
     
     @IBAction func wifiSwitchChanged(_ sender: UISwitch) {
+        updateRegistrationCharge()
     }
    
     @IBAction func cancelButtonTapped(_ sender: Any) {
