@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol AddRegistrationTableViewControllerDelegate {
-    func didRegister(registrationMode: String)
-}
-
 class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeTableViewControllerDelegate {
     
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -47,31 +43,6 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     var roomType: RoomType?
     var tableMode: String?
     var registration: Registration?
-    var delegate: AddRegistrationTableViewControllerDelegate?
-
-    
-//    var registration: Registration? {
-//
-//        guard let roomType = roomType else {return nil}
-//        let firstName = firstNameTextField.text ?? ""
-//        let lastName = lastNameTextField.text ?? ""
-//        let email = emailTextField.text ?? ""
-//        let checkInDate = checkInDatePicker.date
-//        let checkOutDate = checkOutDatePicker.date
-//        let numberOfAdults = Int(numberOfAdultsStepper.value)
-//        let numberOfChildren = Int(numberOfChildrenStepper.value)
-//        let hasWifi = wifiSwitch.isOn
-//
-//        return Registration(firstName: firstName,
-//                            lastName: lastName,
-//                            emailAddress: email,
-//                            checkInDate: checkInDate,
-//                            checkOutDate: checkOutDate,
-//                            numberOfAdults: numberOfAdults,
-//                            numberOfChildren: numberOfChildren,
-//                            roomType: roomType,
-//                            wifi: hasWifi)
-//    }
 
     func didSelect(roomType: RoomType) {
         self.roomType = roomType
@@ -82,17 +53,26 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if tableMode == "VIEW" {
+            firstNameTextField.text = registration?.firstName
+            lastNameTextField.text = registration?.lastName
+            emailTextField.text = registration?.emailAddress
+            checkInDatePicker.date = (registration?.checkInDate)!
+            checkOutDatePicker.date = (registration?.checkOutDate)!
+            numberOfAdultsStepper.value = Double((registration?.numberOfAdults)!)
+            numberOfChildrenStepper.value = Double((registration?.numberOfChildren)!)
+            wifiSwitch.isOn = (registration?.wifi)!
+            roomType = registration?.roomType
+        } else {
         let midnightToday = Calendar.current.startOfDay(for: Date())
         checkInDatePicker.minimumDate = midnightToday
         checkInDatePicker.date = midnightToday
+        }
         
         updateDateViews()
         updateNumberOfGuests()
         updateRoomType()
         enableDoneButton()
-        
-        print("AddRegistrationTableViewController mode is \(tableMode ?? "Nothing set")")
-        delegate?.didRegister(registrationMode: "Calling from AddRegistration")
         
     }
     

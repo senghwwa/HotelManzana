@@ -8,16 +8,11 @@
 
 import UIKit
 
-class RegistrationTableViewController: UITableViewController, AddRegistrationTableViewControllerDelegate {
+class RegistrationTableViewController: UITableViewController {
 
     var registrations: [Registration] = []
     var registrationMode: String = ""
     
-    func didRegister(registrationMode: String) {
-        self.registrationMode = registrationMode
-        print("\(self.registrationMode)")
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -65,13 +60,11 @@ class RegistrationTableViewController: UITableViewController, AddRegistrationTab
 //     }
         guard let addRegistrationTableViewController = segue.destination as? AddRegistrationTableViewController else {return}
         if segue.identifier == "AddRegistration" {
-            print("RegistrationTableView Controller is preparing for ADDITION")
             registrationMode = "ADD"
-            addRegistrationTableViewController.tableMode = "ADDITION mode"
+            addRegistrationTableViewController.tableMode = registrationMode
         } else {
-            print("RegistrationTableView Controller is preparing for VIEW")
             registrationMode = "VIEW"
-            addRegistrationTableViewController.tableMode = "VIEW mode"
+            addRegistrationTableViewController.tableMode = registrationMode
             if let indexPath = tableView.indexPathForSelectedRow {
                 addRegistrationTableViewController.registration = registrations[indexPath.row]
             }
