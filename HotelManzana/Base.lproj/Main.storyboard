@@ -14,7 +14,7 @@
             <objects>
                 <tableViewController title="New Guest Registration" clearsSelectionOnViewWillAppear="NO" id="lCA-Tk-MNB" customClass="AddRegistrationTableViewController" customModule="HotelManzana" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="o34-cR-Rbl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -32,6 +32,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="registrationDataChanged:" destination="lCA-Tk-MNB" eventType="editingChanged" id="dp5-5e-lG5"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -54,6 +57,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="registrationDataChanged:" destination="lCA-Tk-MNB" eventType="editingChanged" id="cJG-SX-H1R"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -76,6 +82,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="registrationDataChanged:" destination="lCA-Tk-MNB" eventType="editingChanged" id="XBl-zU-VPn"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -207,6 +216,7 @@
                                                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Oku-jY-e5g">
                                                             <rect key="frame" x="296" y="7.5" width="94" height="29"/>
                                                             <connections>
+                                                                <action selector="registrationDataChanged:" destination="lCA-Tk-MNB" eventType="editingChanged" id="5VH-ji-IVJ"/>
                                                                 <action selector="stepperValueChanged:" destination="lCA-Tk-MNB" eventType="valueChanged" id="aAO-fg-fXr"/>
                                                             </connections>
                                                         </stepper>
@@ -246,6 +256,7 @@
                                                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="sod-fS-1kx">
                                                             <rect key="frame" x="296" y="7.5" width="94" height="29"/>
                                                             <connections>
+                                                                <action selector="registrationDataChanged:" destination="lCA-Tk-MNB" eventType="editingChanged" id="ywg-Jk-Q6F"/>
                                                                 <action selector="stepperValueChanged:" destination="lCA-Tk-MNB" eventType="valueChanged" id="145-WP-TF2"/>
                                                             </connections>
                                                         </stepper>
@@ -272,23 +283,24 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9VT-2G-g5F">
-                                                    <rect key="frame" x="16" y="0.0" width="351" height="43.5"/>
+                                                    <rect key="frame" x="16" y="0.0" width="390" height="43.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wi-Fi (per day)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mD1-p3-mbD">
-                                                            <rect key="frame" x="0.0" y="11.5" width="239" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="11.5" width="278" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="$ 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtm-pP-Kar">
-                                                            <rect key="frame" x="254" y="11.5" width="33" height="20.5"/>
+                                                            <rect key="frame" x="293" y="11.5" width="33" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mjO-jF-7NP">
-                                                            <rect key="frame" x="302" y="6.5" width="51" height="31"/>
+                                                            <rect key="frame" x="341" y="6.5" width="51" height="31"/>
                                                             <connections>
+                                                                <action selector="registrationDataChanged:" destination="lCA-Tk-MNB" eventType="editingChanged" id="Vvd-yt-v49"/>
                                                                 <action selector="wifiSwitchChanged:" destination="lCA-Tk-MNB" eventType="valueChanged" id="dai-CL-bfa"/>
                                                             </connections>
                                                         </switch>
@@ -311,18 +323,18 @@
                                         <rect key="frame" x="0.0" y="963" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pu0-Ej-8TV" id="PC9-jS-yVY">
-                                            <rect key="frame" x="0.0" y="0.0" width="388" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Room Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xgi-Cb-9Tm">
-                                                    <rect key="frame" x="15" y="12" width="86.5" height="20.5"/>
+                                                    <rect key="frame" x="20" y="12" width="86.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Aoy-op-nt5">
-                                                    <rect key="frame" x="335" y="12" width="44" height="20.5"/>
+                                                    <rect key="frame" x="332" y="12" width="44" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -359,6 +371,7 @@
                         <outlet property="checkInDatePicker" destination="Qoq-LX-UoO" id="rKX-Rj-r7w"/>
                         <outlet property="checkOutDateLabel" destination="Rl0-ih-Xxn" id="FhN-4D-7CN"/>
                         <outlet property="checkOutDatePicker" destination="JjH-DM-tvn" id="9HJ-4C-aHh"/>
+                        <outlet property="doneButtonTapped" destination="67C-rp-N9Z" id="z61-rJ-T39"/>
                         <outlet property="emailTextField" destination="lDk-xd-32J" id="Sqx-6W-Mzr"/>
                         <outlet property="firstNameTextField" destination="d35-ZU-ky5" id="aDR-qg-ta3"/>
                         <outlet property="lastNameTextField" destination="xCo-tf-wmF" id="pWr-4X-Itw"/>
@@ -373,14 +386,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SyR-g4-7yY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="lVN-Wd-hIO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="202.89855072463769" y="-75"/>
+            <point key="canvasLocation" x="-454" y="-75"/>
         </scene>
         <!--Registrations-->
         <scene sceneID="U64-ZG-tfR">
             <objects>
                 <tableViewController title="Registrations" id="tuz-8Y-ESr" customClass="RegistrationTableViewController" customModule="HotelManzana" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="op6-wp-qAD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -407,6 +420,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="lCA-Tk-MNB" kind="show" identifier="ViewRegistration" id="Rh0-Nu-dsJ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -417,10 +433,11 @@
                     <navigationItem key="navigationItem" title="Registrations" id="e2j-oC-vSi">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="e3z-A1-U4C">
                             <connections>
-                                <segue destination="bHL-bK-HEP" kind="presentation" id="xvs-JD-b7B"/>
+                                <segue destination="lCA-Tk-MNB" kind="show" identifier="AddRegistration" id="4ba-RH-oiw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9W0-08-ajz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -430,7 +447,8 @@
         <scene sceneID="8dp-LO-XMI">
             <objects>
                 <navigationController id="RzA-0q-vBb" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5pL-cW-pRo">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="5pL-cW-pRo">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -442,12 +460,12 @@
             </objects>
             <point key="canvasLocation" x="-2571" y="-75"/>
         </scene>
-        <!--Select Room Type Table View Controller-->
+        <!--Select Room-->
         <scene sceneID="rco-cn-cxk">
             <objects>
-                <tableViewController id="Shv-s6-4wi" customClass="SelectRoomTypeTableViewController" customModule="HotelManzana" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Select Room" clearsSelectionOnViewWillAppear="NO" id="Shv-s6-4wi" customClass="SelectRoomTypeTableViewController" customModule="HotelManzana" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MLm-39-BJK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -482,26 +500,14 @@
                             <outlet property="delegate" destination="Shv-s6-4wi" id="BoK-Vv-r0f"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tV9-FB-2Qj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1377" y="-75"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="MVv-fg-Irk">
-            <objects>
-                <navigationController id="bHL-bK-HEP" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qG2-S0-1Dt">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="lCA-Tk-MNB" kind="relationship" relationship="rootViewController" id="Pmo-gF-Fje"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3o1-Bv-ERE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-749" y="-75"/>
+            <point key="canvasLocation" x="652" y="-75"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Rh0-Nu-dsJ"/>
+    </inferredMetricsTieBreakers>
 </document>

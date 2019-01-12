@@ -8,7 +8,9 @@
 
 import UIKit
 
-
+protocol AddRegistrationTableViewControllerDelegate {
+    func didRegister(registrationMode: String)
+}
 
 class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeTableViewControllerDelegate {
     
@@ -25,6 +27,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     @IBOutlet weak var numberOfChildrenStepper: UIStepper!
     @IBOutlet weak var wifiSwitch: UISwitch!
     @IBOutlet weak var roomTypeLabel: UILabel!
+    @IBOutlet weak var doneButtonTapped: UIBarButtonItem!
     
     
     
@@ -40,34 +43,40 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
             checkOutDatePicker.isHidden = !isCheckOutDatePickerShown
         }
     }
-    var roomType: RoomType?
     
+    var roomType: RoomType?
+    var tableMode: String?
+    var registration: Registration?
+    var delegate: AddRegistrationTableViewControllerDelegate?
+
+    
+//    var registration: Registration? {
+//
+//        guard let roomType = roomType else {return nil}
+//        let firstName = firstNameTextField.text ?? ""
+//        let lastName = lastNameTextField.text ?? ""
+//        let email = emailTextField.text ?? ""
+//        let checkInDate = checkInDatePicker.date
+//        let checkOutDate = checkOutDatePicker.date
+//        let numberOfAdults = Int(numberOfAdultsStepper.value)
+//        let numberOfChildren = Int(numberOfChildrenStepper.value)
+//        let hasWifi = wifiSwitch.isOn
+//
+//        return Registration(firstName: firstName,
+//                            lastName: lastName,
+//                            emailAddress: email,
+//                            checkInDate: checkInDate,
+//                            checkOutDate: checkOutDate,
+//                            numberOfAdults: numberOfAdults,
+//                            numberOfChildren: numberOfChildren,
+//                            roomType: roomType,
+//                            wifi: hasWifi)
+//    }
+
     func didSelect(roomType: RoomType) {
         self.roomType = roomType
         updateRoomType()
-    }
-    
-    var registration: Registration? {
-        
-        guard let roomType = roomType else {return nil}
-        let firstName = firstNameTextField.text ?? ""
-        let lastName = lastNameTextField.text ?? ""
-        let email = emailTextField.text ?? ""
-        let checkInDate = checkInDatePicker.date
-        let checkOutDate = checkOutDatePicker.date
-        let numberOfAdults = Int(numberOfAdultsStepper.value)
-        let numberOfChildren = Int(numberOfChildrenStepper.value)
-        let hasWifi = wifiSwitch.isOn
-        
-        return Registration(firstName: firstName,
-                            lastName: lastName,
-                            emailAddress: email,
-                            checkInDate: checkInDate,
-                            checkOutDate: checkOutDate,
-                            numberOfAdults: numberOfAdults,
-                            numberOfChildren: numberOfChildren,
-                            roomType: roomType,
-                            wifi: hasWifi)
+        enableDoneButton()
     }
     
     override func viewDidLoad() {
@@ -80,6 +89,10 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
         updateDateViews()
         updateNumberOfGuests()
         updateRoomType()
+        enableDoneButton()
+        
+        print("AddRegistrationTableViewController mode is \(tableMode ?? "Nothing set")")
+        delegate?.didRegister(registrationMode: "Calling from AddRegistration")
         
     }
     
@@ -133,15 +146,15 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
         }
     }
     
-    /*
      // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SelectRoomType" {
+            let destinationViewController = segue.destination as? SelectRoomTypeTableViewController
+            destinationViewController?.delegate = self
+            destinationViewController?.roomType = roomType
+        }
+    }
+
     
     func updateDateViews() {
         let dateFormatter = DateFormatter()
@@ -165,12 +178,47 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SelectRoomType" {
-            let destinationViewController = segue.destination as? SelectRoomTypeTableViewController
-            destinationViewController?.delegate = self
-            destinationViewController?.roomType = roomType
+    func enableDoneButton() {
+        doneButtonTapped.isEnabled = false
+        
+        let firstName = firstNameTextField.text ?? ""
+        let lastName = lastNameTextField.text ?? ""
+        let email = emailTextField.text ?? ""
+        let checkInDate = checkInDatePicker.date
+        let checkOutDate = checkOutDatePicker.date
+        let numberOfAdults = Int(numberOfAdultsStepper.value)
+        let numberOfChildren = Int(numberOfChildrenStepper.value)
+        let hasWifi = wifiSwitch.isOn
+        let roomChoice = roomType?.name ?? "Not set"
+        if firstName == "" || lastName == "" || email == "" {
+            return
         }
+        if numberOfAdults == 0 {
+            return
+        }
+        if roomChoice == "Not set" {
+            return
+        }
+        
+        
+        registration = Registration(firstName: firstName,
+                                    lastName: lastName,
+                                    emailAddress: email,
+                                    checkInDate: checkInDate,
+                                    checkOutDate: checkOutDate,
+                                    numberOfAdults: numberOfAdults,
+                                    numberOfChildren: numberOfChildren,
+                                    roomType: (roomType ?? nil)!,
+                                    wifi: hasWifi)
+        
+        doneButtonTapped.isEnabled = true
+
+    }
+    
+    @IBAction func registrationDataChanged(_ sender: Any?) {
+
+        enableDoneButton()
+        
     }
     
 //    @IBAction func doneBarButtonTapped(_ sender: Any) {

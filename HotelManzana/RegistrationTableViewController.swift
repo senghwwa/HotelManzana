@@ -8,18 +8,18 @@
 
 import UIKit
 
-class RegistrationTableViewController: UITableViewController {
+class RegistrationTableViewController: UITableViewController, AddRegistrationTableViewControllerDelegate {
 
     var registrations: [Registration] = []
+    var registrationMode: String = ""
     
+    func didRegister(registrationMode: String) {
+        self.registrationMode = registrationMode
+        print("\(self.registrationMode)")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -42,64 +42,54 @@ class RegistrationTableViewController: UITableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         
-cell.textLabel?.text = registration.firstName + " " + registration.lastName
+        cell.textLabel?.text = registration.firstName + " " + registration.lastName
         cell.detailTextLabel?.text = dateFormatter.string(from: registration.checkInDate) + " - " + dateFormatter.string(from: registration.checkOutDate) + " : " + registration.roomType.name
         
         return cell
     }
     
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+//     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//     guard let bookFormViewController = segue.destination as? BookFormTableViewController else {return}
+//
+//     if let indexPath = tableView.indexPathForSelectedRow,
+//     segue.identifier == PropertyKeys.editBookSegue {
+//     bookFormViewController.book = books[indexPath.row]
+//     }
+        guard let addRegistrationTableViewController = segue.destination as? AddRegistrationTableViewController else {return}
+        if segue.identifier == "AddRegistration" {
+            print("RegistrationTableView Controller is preparing for ADDITION")
+            registrationMode = "ADD"
+            addRegistrationTableViewController.tableMode = "ADDITION mode"
+        } else {
+            print("RegistrationTableView Controller is preparing for VIEW")
+            registrationMode = "VIEW"
+            addRegistrationTableViewController.tableMode = "VIEW mode"
+            if let indexPath = tableView.indexPathForSelectedRow {
+                addRegistrationTableViewController.registration = registrations[indexPath.row]
+            }
+        }
     }
-    */
+    
 
     @IBAction func unwindFromAddRegistration(unwindSegue: UIStoryboardSegue) {
-        
+        print("Unwound")
         guard let addRegistrationViewController = unwindSegue.source as? AddRegistrationTableViewController,
             let registration = addRegistrationViewController.registration else {return}
-        registrations.append(registration)
-        tableView.reloadData()
+        if registrationMode == "ADD" {
+            print("Adding registration")
+            registrations.append(registration)
+            tableView.reloadData()
+        } else {
+            print ("Not adding registration")
+        }
     }
     
 }
