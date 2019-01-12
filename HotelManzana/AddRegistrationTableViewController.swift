@@ -33,6 +33,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     
     let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
     let checkOutDatePickerCellIndexPath = IndexPath(row: 3, section: 1)
+    let roomTypeSelectCellIndexPath = IndexPath(row: 0, section: 4)
     var isCheckInDatePickerShown: Bool = false {
         didSet {
             checkInDatePicker.isHidden = !isCheckInDatePickerShown
@@ -54,6 +55,17 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
         super.viewDidLoad()
         
         if tableMode == "VIEW" {
+            firstNameTextField.isEnabled = false
+            lastNameTextField.isEnabled = false
+            emailTextField.isEnabled = false
+            checkInDatePicker.isEnabled = false
+            //checkInDatePicker.isHidden = true
+            checkOutDatePicker.isEnabled = false
+            //checkOutDatePicker.isHidden = true
+            numberOfAdultsStepper.isEnabled = false
+            numberOfChildrenStepper.isEnabled = false
+            wifiSwitch.isEnabled = false
+            
             firstNameTextField.text = registration?.firstName
             lastNameTextField.text = registration?.lastName
             emailTextField.text = registration?.emailAddress
@@ -77,6 +89,23 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
         enableDoneButton()
         
     }
+
+    
+    /*
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "SelectRoom", for: indexPath) {}
+        
+        if tableMode == "VIEW" {
+            //cell.accessoryType = UITableViewCell.AccessoryType.none
+            print("cell view")
+        } else {
+            print("cell add")
+            //cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        }
+        return cell
+        
+    }
+*/
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch (indexPath.section, indexPath.row) {
@@ -127,6 +156,9 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
             break
         }
     }
+ 
+
+
     
      // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -179,15 +211,12 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
         let hasWifi = wifiSwitch.isOn
         let roomChoice = roomType?.name ?? "Not set"
         if firstName == "" || lastName == "" || email == "" {
-            print("No customer details")
             return
         }
         if numberOfAdults == 0 {
-            print("No adults")
             return
         }
         if roomChoice == "Not set" {
-            print("No room choice")
             return
         }
         
