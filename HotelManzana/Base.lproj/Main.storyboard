@@ -14,7 +14,7 @@
             <objects>
                 <tableViewController title="New Guest Registration" clearsSelectionOnViewWillAppear="NO" id="lCA-Tk-MNB" customClass="AddRegistrationTableViewController" customModule="HotelManzana" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="o34-cR-Rbl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -357,7 +357,7 @@
                     <navigationItem key="navigationItem" title="New Guest Registration" id="zs0-e6-dtc">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="aAX-mr-Yzh">
                             <connections>
-                                <action selector="cancelButtonTapped:" destination="lCA-Tk-MNB" id="q63-EF-aHL"/>
+                                <action selector="cancelButtonTapped:" destination="lCA-Tk-MNB" id="Jko-5e-UBi"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="67C-rp-N9Z">
@@ -367,6 +367,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="aAX-mr-Yzh" id="Gpp-YW-o5k"/>
                         <outlet property="checkInDateLabel" destination="TOt-sb-a9R" id="tVp-GK-LmP"/>
                         <outlet property="checkInDatePicker" destination="Qoq-LX-UoO" id="rKX-Rj-r7w"/>
                         <outlet property="checkOutDateLabel" destination="Rl0-ih-Xxn" id="FhN-4D-7CN"/>
@@ -393,7 +394,7 @@
             <objects>
                 <tableViewController title="Registrations" id="tuz-8Y-ESr" customClass="RegistrationTableViewController" customModule="HotelManzana" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="op6-wp-qAD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -437,7 +438,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9W0-08-ajz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -447,8 +447,7 @@
         <scene sceneID="8dp-LO-XMI">
             <objects>
                 <navigationController id="RzA-0q-vBb" sceneMemberID="viewController">
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="5pL-cW-pRo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5pL-cW-pRo">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -465,7 +464,7 @@
             <objects>
                 <tableViewController title="Select Room" clearsSelectionOnViewWillAppear="NO" id="Shv-s6-4wi" customClass="SelectRoomTypeTableViewController" customModule="HotelManzana" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MLm-39-BJK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -508,6 +507,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Rh0-Nu-dsJ"/>
+        <segue reference="4ba-RH-oiw"/>
     </inferredMetricsTieBreakers>
 </document>

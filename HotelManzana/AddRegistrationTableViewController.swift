@@ -24,6 +24,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     @IBOutlet weak var wifiSwitch: UISwitch!
     @IBOutlet weak var roomTypeLabel: UILabel!
     @IBOutlet weak var doneButtonTapped: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     
     
@@ -63,6 +64,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
             numberOfChildrenStepper.value = Double((registration?.numberOfChildren)!)
             wifiSwitch.isOn = (registration?.wifi)!
             roomType = registration?.roomType
+            cancelButton.isEnabled = false
         } else {
         let midnightToday = Calendar.current.startOfDay(for: Date())
         checkInDatePicker.minimumDate = midnightToday
@@ -180,7 +182,6 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
             return
         }
         
-        
         registration = Registration(firstName: firstName,
                                     lastName: lastName,
                                     emailAddress: email,
@@ -201,26 +202,6 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
         
     }
     
-//    @IBAction func doneBarButtonTapped(_ sender: Any) {
-//        let firstName = firstNameTextField.text ?? ""
-//        let lastName = lastNameTextField.text ?? ""
-//        let email = emailTextField.text ?? ""
-//        let checkInDate = checkInDatePicker.date
-//        let checkOutDate = checkOutDatePicker.date
-//        let numberOfAdults = Int(numberOfAdultsStepper.value)
-//        let numberOfChildren = Int(numberOfChildrenStepper.value)
-//        let hasWifi = wifiSwitch.isOn
-//        let roomChoice = roomType?.name ?? "Not set"
-//        
-//        print("DONE Tapped")
-//        print("\(firstName) : \(lastName) : \(email)")
-//        print("check-in: \(checkInDate)")
-//        print("check-Out: \(checkOutDate)")
-//        print("number of adults: \(numberOfAdults)")
-//        print("number of children: \(numberOfChildren)")
-//        print("has wifi: \(hasWifi)")
-//        print("room choice: \(roomChoice)")
-//    }
     
     @IBAction func datePickerValueChanged(_ sender: Any) {
         updateDateViews()
@@ -234,7 +215,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     }
    
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
