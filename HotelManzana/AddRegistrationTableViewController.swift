@@ -55,10 +55,11 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
         super.viewWillAppear(animated)
         
         if tableMode == "VIEW" {
+            
+            // disabling entire tableview also stops ability to scroll table eg. in landscape mode. So revert to disabling cell
+            //tableView.isUserInteractionEnabled = false
             let cell = tableView.cellForRow(at: roomTypeSelectCellIndexPath)
             cell?.isUserInteractionEnabled = false
-            tableView.beginUpdates()
-            tableView.endUpdates()
         }
     }
     
