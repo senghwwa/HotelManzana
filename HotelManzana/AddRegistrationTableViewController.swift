@@ -50,6 +50,17 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     var registration: Registration?
     var chargeTotal: Double = 0.0
     
+    // Added this override so that I can influence the cell property of user interaction enablement before the tableview is loaded. Only way to prevent user interaction at tableview initialisation
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if tableMode == "VIEW" {
+            let cell = tableView.cellForRow(at: roomTypeSelectCellIndexPath)
+            cell?.isUserInteractionEnabled = false
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +86,10 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
             numberOfChildrenStepper.value = Double((registration?.numberOfChildren)!)
             wifiSwitch.isOn = (registration?.wifi)!
             roomType = registration?.roomType
+
+
             cancelButton.isEnabled = false
+            
         } else {
         let midnightToday = Calendar.current.startOfDay(for: Date())
         checkInDatePicker.minimumDate = midnightToday
@@ -90,23 +104,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
         
     }
 
-    
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "SelectRoom", for: indexPath) {}
-        
-        if tableMode == "VIEW" {
-            //cell.accessoryType = UITableViewCell.AccessoryType.none
-            print("cell view")
-        } else {
-            print("cell add")
-            //cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-        }
-        return cell
-        
-    }
-*/
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch (indexPath.section, indexPath.row) {
         case (checkInDatePickerCellIndexPath.section, checkInDatePickerCellIndexPath.row):
@@ -151,14 +149,12 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
             }
             tableView.beginUpdates()
             tableView.endUpdates()
-            
+
         default:
             break
         }
     }
  
-
-
     
      // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
